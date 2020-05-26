@@ -6,11 +6,11 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import mavonEditor from 'mavon-editor'
-// import 'echarts/theme/macarons.js'
-// import echarts from 'echarts'
+
+import echarts from 'echarts'
 import store from './store'
 import  'mavon-editor/dist/css/index.css'
-
+import 'echarts/theme/macarons.js'
 
 //设置反向代理，前端请求默认发送到 http://localhost:8443/api
 var axios = require('axios')
@@ -18,7 +18,7 @@ axios.defaults.baseURL = 'http://localhost:8443/api'
 // 全局注册，之后可在其他组件使用this.$axios发送数据
 Vue.prototype.$axios = axios
 
-// Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts = echarts
 
 //作用是阻止vue 在启动时生成生产提示
 Vue.config.productionTip = false

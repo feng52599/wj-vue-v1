@@ -32,14 +32,14 @@ export default new Router({
         requireAuth: true
       },
       children: [
-      //   {
-      //     path: '/admin/dashboard',
-      //     name: 'dashboard',
-      //     component: DashBoard,
-      //     meta: {
-      //       requireAuth: true
-      //     }
-      //   }
+        {
+          path: '/admin/dashboard',
+          name: 'Dashboard',
+          component: () => import('../components/admin/dashboard/admin/index'),
+          meta: {
+            requireAuth: true
+          }
+        },
         {
           path: '/admin/content/editor',
           name: 'Editor',
