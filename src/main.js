@@ -9,7 +9,7 @@ import mavonEditor from 'mavon-editor'
 // import 'echarts/theme/macarons.js'
 // import echarts from 'echarts'
 import store from './store'
-
+import  'mavon-editor/dist/css/index.css'
 
 
 //设置反向代理，前端请求默认发送到 http://localhost:8443/api
