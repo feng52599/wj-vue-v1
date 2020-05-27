@@ -49,7 +49,7 @@
 </template>
 
 <script>
-  import ImgUpload from '../../library/ImgUpload'
+  import ImgUpload from './ImgUpload'
 
   export default {
     name: 'Editor',

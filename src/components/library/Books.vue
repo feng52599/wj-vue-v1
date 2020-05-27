@@ -1,7 +1,8 @@
 <template>
   <div>
     <el-row style="height: 840px;">
-      <search-bar @onSearch="searchResult"></search-bar>
+      <search-bar @onSearch="searchResult"  ref="searchBar"></search-bar>
+      <view-switch class="switch"></view-switch>
       <el-tooltip effect="dark" placement="right"
                   v-for="item in books.slice((currentPage-1)*pagesize,currentPage*pagesize)"
                   :key="item.id">
@@ -28,7 +29,7 @@
           <div class="author">{{item.author}}</div>
         </el-card>
       </el-tooltip>
-      <edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>
+      <!--<edit-form @onSubmit="loadBooks()" ref="edit"></edit-form>-->
     </el-row>
     <el-row>
       <el-pagination
@@ -44,9 +45,10 @@
 <script>
   import EditForm from './EditForm'
   import SearchBar from './SearchBar'
+  import ViewSwitch from './ViewSwitch'
   export default {
     name: 'Books',
-    components: {EditForm, SearchBar},
+    components: {EditForm, SearchBar, ViewSwitch},
     data () {
       return {
         books: [],
@@ -61,8 +63,8 @@
       loadBooks () {
         var _this = this
         this.$axios.get('/books').then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.books = resp.data.result
           }
         })
       },
@@ -70,13 +72,13 @@
         this.currentPage = currentPage
         console.log(this.currentPage)
       },
-      searchResult (keywords) {
+      searchResult () {
         var _this = this
         this.$axios
-          .get('/search?keywords=' + keywords, {
+          .get('/search?keywords=' + this.$refs.searchBar.keywords, {
           }).then(resp => {
-          if (resp && resp.status === 200) {
-            _this.books = resp.data
+          if (resp && resp.data.code === 200) {
+            _this.books = resp.data.result
           }
         })
       },

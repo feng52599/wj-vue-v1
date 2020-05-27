@@ -25,7 +25,7 @@
         var url = 'categories/' + cid + '/books'
         this.$axios.get(url).then(resp => {
           if (resp && resp.status === 200) {
-            _this.$refs.booksArea.books = resp.data
+            _this.$refs.booksArea.books = resp.data.result
           }
         })
       }
