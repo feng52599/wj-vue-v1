@@ -43,12 +43,12 @@
 </template>
 
 <script>
-  import EditForm from './EditForm'
+  // import EditForm from './EditForm'
   import SearchBar from './SearchBar'
   import ViewSwitch from './ViewSwitch'
   export default {
     name: 'Books',
-    components: {EditForm, SearchBar, ViewSwitch},
+    components: {SearchBar, ViewSwitch},
     data () {
       return {
         books: [],
